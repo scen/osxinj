@@ -1,6 +1,8 @@
 osxinj
 ======
 
-dylib injector
+Another dylib injector.
 
-Released under the MIT License (see `LICENSE.md`).
+`mach_inject` was taken from `rentzsch/mach_inject`. Thanks!
+
+Released under the MIT License.
