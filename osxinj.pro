@@ -11,6 +11,16 @@ CONFIG += c++11
 # uncomment to disable .app file creation
 CONFIG -= app_bundle
 
+### 32bit vs 64bit
+
+macx-clang-32 {
+	DEFINES += ENV32
+}
+
+macx-clang-64 {
+	DEFINES += ENV64
+}
+
 ### Directories
 
 DEPENDPATH += .
@@ -31,6 +41,13 @@ RCC_DIR = build/rccfiles
 UI_DIR = build/uifiles
 MOC_DIR = build/mocfiles
 OBJECTS_DIR = build/objfiles
-DESTDIR = bin
+
+CONFIG(debug, debug|release) {
+	DESTDIR = bin/debug
+}
+
+CONFIG(release, debug|release) {
+	DESTDIR = bin/release
+}
 
 cache()
