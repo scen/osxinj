@@ -1,8 +1,8 @@
 #include "injector.h"
 
 #include <cstdio>
+#include <cstring>
 
-#include <Carbon/Carbon.h>
 #include <mach/mach.h>
 #include <mach/thread_act.h>
 #include <mach/mach_init.h>
@@ -15,6 +15,19 @@ Injector::Injector()
 
 Injector::~Injector()
 {
+}
+
+OSErr Injector::getProcessByName(OSType type, StringPtr name, ProcessSerialNumber &psn)
+{
+    ProcessSerialNumber tmpPSN = {0, kNoProcess};
+    ProcessInfoRec procInfo;
+    OSErr err = noErr;
+
+    procInfo.processInfoLength = sizeof(ProcessInfoRec);
+    procInfo.processName = NULL;
+    procInfo.processAppSpec = NULL;
+
+    return err;
 }
 
 void *Injector::pthread_entry(void *patch_bundle)

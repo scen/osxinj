@@ -2,6 +2,7 @@
 #define _INJECTOR_H_
 
 #include <mach_inject/mach_inject.h>
+#include <Carbon/Carbon.h>
 
 extern "C" void __pthread_set_self(void*);
 
@@ -13,6 +14,8 @@ private:
 public:
     Injector();
     ~Injector();
+
+    OSErr getProcessByName(OSType type, StringPtr name, ProcessSerialNumber &psn);
 };
 
 #endif
