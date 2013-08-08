@@ -5,6 +5,8 @@
 TEMPLATE = app
 TARGET = osxinj
 
+QT += core gui widgets
+
 ### Config
 
 CONFIG += c++11

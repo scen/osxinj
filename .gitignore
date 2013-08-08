@@ -6,6 +6,5 @@
 Debug/*
 Release/*
 *.build
-osxinj
 bin/*
 build/*

@@ -25,8 +25,11 @@ OSErr Injector::getProcessByName(OSType type, StringPtr name, ProcessSerialNumbe
 
     procInfo.processInfoLength = sizeof(ProcessInfoRec);
     procInfo.processName = NULL;
+#if ENV32
     procInfo.processAppSpec = NULL;
-
+#else
+    procInfo.processAppRef = NULL;
+#endif
     return err;
 }
 
