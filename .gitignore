@@ -8,3 +8,6 @@ Release/*
 *.build
 bin/*
 build/*
+osxinj/build*
+osxinj/bin*
+testapp/testapp
