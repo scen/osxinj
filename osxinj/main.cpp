@@ -8,18 +8,27 @@
 
 int main(int argc, char* argv[])
 {
-    if (argc < 2) return 0;
+    if (argc < 3)
+    {
+        fprintf(stderr, "Usage: osxinj [proc_name] [lib]\n");
+        return 0;
+    }
 
     char path[4096];
-    realpath(argv[1], path);
+    realpath(argv[2], path);
 
-    printf("%s\n", path);
+    fprintf(stderr, "%s\n", path);
 
     Injector inj;
     
-    pid_t pid = inj.getProcessByName("testapp");
-    printf("pid = %u\n", pid);
-
+    pid_t pid = inj.getProcessByName(argv[1]);
+    if (!pid)
+    {
+        fprintf(stderr, "process %s not found\n", argv[1]);
+        return 0;
+    }
+    fprintf(stderr, "pid: %u\n", pid);
+    
     inj.inject(pid, path);
     return 0;
 }
