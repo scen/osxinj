@@ -1,8 +1,8 @@
 #ifndef _INJECTOR_H_
 #define _INJECTOR_H_
 
-#include <mach_inject/mach_inject.h>
-#include <Carbon/Carbon.h>
+#include "mach_inject.h"
+// #include <Carbon/Carbon.h>
 
 extern "C" void __pthread_set_self(void*);
 
@@ -15,7 +15,8 @@ public:
     Injector();
     ~Injector();
 
-    OSErr getProcessByName(OSType type, StringPtr name, ProcessSerialNumber &psn);
+    void inject(pid_t pid, const char* lib);
+    pid_t getProcessByName(const char *name);
 };
 
 #endif
