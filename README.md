@@ -8,8 +8,6 @@ Another dylib injector.
 
 Released under the MIT License.
 
-
-
 Notes
 -----
 
