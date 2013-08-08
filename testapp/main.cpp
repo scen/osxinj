@@ -1,9 +1,18 @@
-#include <cstdio>
-#include <unistd.h>
+//
+//  main.cpp
+//  testapp
+//
+//  Created by Stanley Cen on 8/8/13.
+//  Copyright (c) 2013 stanleycen. All rights reserved.
+//
 
-int main(int argc, char* argv[])
+#include <iostream>
+
+int main(int argc, const char * argv[])
 {
-    printf("testapp reporting in!\n");
-    sleep(100000000);
+
+    // insert code here...
+    std::cout << "Hello, World!\n";
     return 0;
 }
+

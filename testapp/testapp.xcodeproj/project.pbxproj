@@ -6,8 +6,12 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C46F6D8317B41DC2000369C2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C46F6D8217B41DC2000369C2 /* main.cpp */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
-		C46F6D1E17B41A53000369C2 /* CopyFiles */ = {
+		C46F6D7417B41D6E000369C2 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -19,16 +23,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C46F6D2017B41A53000369C2 /* osxinj */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = osxinj; sourceTree = BUILT_PRODUCTS_DIR; };
-		C46F6D6717B41D33000369C2 /* injector.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = injector.cpp; sourceTree = SOURCE_ROOT; };
-		C46F6D6817B41D33000369C2 /* injector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = injector.h; sourceTree = SOURCE_ROOT; };
-		C46F6D6917B41D33000369C2 /* mach_inject.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = mach_inject.c; sourceTree = SOURCE_ROOT; };
-		C46F6D6A17B41D33000369C2 /* mach_inject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mach_inject.h; sourceTree = SOURCE_ROOT; };
-		C46F6D6B17B41D33000369C2 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
+		C46F6D7617B41D6E000369C2 /* testapp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = testapp; sourceTree = BUILT_PRODUCTS_DIR; };
+		C46F6D8217B41DC2000369C2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C46F6D1D17B41A53000369C2 /* Frameworks */ = {
+		C46F6D7317B41D6E000369C2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -38,100 +38,96 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C46F6D1717B41A53000369C2 = {
+		C46F6D6D17B41D6E000369C2 = {
 			isa = PBXGroup;
 			children = (
-				C46F6D2217B41A53000369C2 /* Source */,
-				C46F6D2117B41A53000369C2 /* Products */,
+				C46F6D7817B41D6E000369C2 /* Source */,
+				C46F6D7717B41D6E000369C2 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		C46F6D2117B41A53000369C2 /* Products */ = {
+		C46F6D7717B41D6E000369C2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C46F6D2017B41A53000369C2 /* osxinj */,
+				C46F6D7617B41D6E000369C2 /* testapp */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C46F6D2217B41A53000369C2 /* Source */ = {
+		C46F6D7817B41D6E000369C2 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				C46F6D6717B41D33000369C2 /* injector.cpp */,
-				C46F6D6817B41D33000369C2 /* injector.h */,
-				C46F6D6917B41D33000369C2 /* mach_inject.c */,
-				C46F6D6A17B41D33000369C2 /* mach_inject.h */,
-				C46F6D6B17B41D33000369C2 /* main.cpp */,
+				C46F6D8217B41DC2000369C2 /* main.cpp */,
 			);
 			name = Source;
-			path = osxinj;
+			path = testapp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C46F6D1F17B41A53000369C2 /* osxinj */ = {
+		C46F6D7517B41D6E000369C2 /* testapp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C46F6D2917B41A53000369C2 /* Build configuration list for PBXNativeTarget "osxinj" */;
+			buildConfigurationList = C46F6D7F17B41D6E000369C2 /* Build configuration list for PBXNativeTarget "testapp" */;
 			buildPhases = (
-				C46F6D1C17B41A53000369C2 /* Sources */,
-				C46F6D1D17B41A53000369C2 /* Frameworks */,
-				C46F6D1E17B41A53000369C2 /* CopyFiles */,
+				C46F6D7217B41D6E000369C2 /* Sources */,
+				C46F6D7317B41D6E000369C2 /* Frameworks */,
+				C46F6D7417B41D6E000369C2 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = osxinj;
-			productName = osxinj;
-			productReference = C46F6D2017B41A53000369C2 /* osxinj */;
+			name = testapp;
+			productName = testapp;
+			productReference = C46F6D7617B41D6E000369C2 /* testapp */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		C46F6D1817B41A53000369C2 /* Project object */ = {
+		C46F6D6E17B41D6E000369C2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = stanleycen;
 			};
-			buildConfigurationList = C46F6D1B17B41A53000369C2 /* Build configuration list for PBXProject "osxinj" */;
+			buildConfigurationList = C46F6D7117B41D6E000369C2 /* Build configuration list for PBXProject "testapp" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = C46F6D1717B41A53000369C2;
-			productRefGroup = C46F6D2117B41A53000369C2 /* Products */;
+			mainGroup = C46F6D6D17B41D6E000369C2;
+			productRefGroup = C46F6D7717B41D6E000369C2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C46F6D1F17B41A53000369C2 /* osxinj */,
+				C46F6D7517B41D6E000369C2 /* testapp */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C46F6D1C17B41A53000369C2 /* Sources */ = {
+		C46F6D7217B41D6E000369C2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C46F6D8317B41DC2000369C2 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		C46F6D2717B41A53000369C2 /* Debug */ = {
+		C46F6D7D17B41D6E000369C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
@@ -157,14 +153,13 @@
 			};
 			name = Debug;
 		};
-		C46F6D2817B41A53000369C2 /* Release */ = {
+		C46F6D7E17B41D6E000369C2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
@@ -183,14 +178,14 @@
 			};
 			name = Release;
 		};
-		C46F6D2A17B41A53000369C2 /* Debug */ = {
+		C46F6D8017B41D6E000369C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		C46F6D2B17B41A53000369C2 /* Release */ = {
+		C46F6D8117B41D6E000369C2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -200,25 +195,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C46F6D1B17B41A53000369C2 /* Build configuration list for PBXProject "osxinj" */ = {
+		C46F6D7117B41D6E000369C2 /* Build configuration list for PBXProject "testapp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C46F6D2717B41A53000369C2 /* Debug */,
-				C46F6D2817B41A53000369C2 /* Release */,
+				C46F6D7D17B41D6E000369C2 /* Debug */,
+				C46F6D7E17B41D6E000369C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C46F6D2917B41A53000369C2 /* Build configuration list for PBXNativeTarget "osxinj" */ = {
+		C46F6D7F17B41D6E000369C2 /* Build configuration list for PBXNativeTarget "testapp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C46F6D2A17B41A53000369C2 /* Debug */,
-				C46F6D2B17B41A53000369C2 /* Release */,
+				C46F6D8017B41D6E000369C2 /* Debug */,
+				C46F6D8117B41D6E000369C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = C46F6D1817B41A53000369C2 /* Project object */;
+	rootObject = C46F6D6E17B41D6E000369C2 /* Project object */;
 }
