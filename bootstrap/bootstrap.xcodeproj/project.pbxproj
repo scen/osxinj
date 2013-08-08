@@ -11,7 +11,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C46F6D9D17B41DE2000369C2 /* libbootstrap.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libbootstrap.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		C46F6D9D17B41DE2000369C2 /* bootstrap.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = bootstrap.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		C46F6DA817B41E29000369C2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -37,7 +37,7 @@
 		C46F6D9E17B41DE2000369C2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C46F6D9D17B41DE2000369C2 /* libbootstrap.dylib */,
+				C46F6D9D17B41DE2000369C2 /* bootstrap.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -77,7 +77,7 @@
 			);
 			name = bootstrap;
 			productName = bootstrap;
-			productReference = C46F6D9D17B41DE2000369C2 /* libbootstrap.dylib */;
+			productReference = C46F6D9D17B41DE2000369C2 /* bootstrap.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -178,7 +178,7 @@
 		C46F6DA217B41DE2000369C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_PREFIX = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -186,7 +186,7 @@
 		C46F6DA317B41DE2000369C2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_PREFIX = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -210,6 +210,7 @@
 				C46F6DA317B41DE2000369C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

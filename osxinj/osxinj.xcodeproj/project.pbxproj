@@ -6,13 +6,23 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C438F97217B4222E00C028FE /* injector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C46F6D6717B41D33000369C2 /* injector.cpp */; };
+		C438F97317B4222E00C028FE /* injector.h in Sources */ = {isa = PBXBuildFile; fileRef = C46F6D6817B41D33000369C2 /* injector.h */; };
+		C438F97417B4222E00C028FE /* mach_inject.c in Sources */ = {isa = PBXBuildFile; fileRef = C46F6D6917B41D33000369C2 /* mach_inject.c */; };
+		C438F97517B4222E00C028FE /* mach_inject.h in Sources */ = {isa = PBXBuildFile; fileRef = C46F6D6A17B41D33000369C2 /* mach_inject.h */; };
+		C438F97617B4222E00C028FE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C46F6D6B17B41D33000369C2 /* main.cpp */; };
+		C438F97717B4246F00C028FE /* osxinj in CopyFiles */ = {isa = PBXBuildFile; fileRef = C46F6D2017B41A53000369C2 /* osxinj */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		C46F6D1E17B41A53000369C2 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
+			buildActionMask = 8;
+			dstPath = bin;
 			dstSubfolderSpec = 0;
 			files = (
+				C438F97717B4246F00C028FE /* osxinj in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -118,6 +128,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C438F97217B4222E00C028FE /* injector.cpp in Sources */,
+				C438F97317B4222E00C028FE /* injector.h in Sources */,
+				C438F97417B4222E00C028FE /* mach_inject.c in Sources */,
+				C438F97517B4222E00C028FE /* mach_inject.h in Sources */,
+				C438F97617B4222E00C028FE /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
