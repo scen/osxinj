@@ -12,17 +12,45 @@
 #include <sys/proc_info.h>
 #include <libproc.h>    
 
-Injector::Injector()
+Injector::Injector() : module(0), bootstrapfn(0)
 {
+    module = dlopen("bootstrap.dylib",
+        RTLD_NOW | RTLD_LOCAL);
+
+    printf("module: 0x%X\n", module);
+    if (!module)
+    {
+        fprintf(stderr, "dlopen error: %s\n", dlerror());
+        return;
+    }
+
+    bootstrapfn = dlsym(module, "bootstrap");
+    printf("bootstrapfn: 0x%X\n", bootstrapfn);
+
+    if (!bootstrapfn)
+    {
+        fprintf(stderr, "could not locate bootstrap fn\n");
+        return;
+    }
 }
 
 Injector::~Injector()
 {
+    if (module)
+    {
+        dlclose(module);
+        module = NULL;
+    }
 }
 
 void Injector::inject(pid_t pid, const char* lib)
 {
-    mach_error_t err = mach_inject(&Injector::inject_entry, lib, sizeof(lib) + 1, pid, 0);
+    if (!module || !bootstrapfn)
+    {
+        fprintf(stderr, "failed to inject: module:0x%X bootstrapfn:0x%X\n", module, bootstrapfn);
+        return;
+    }
+    mach_error_t err = mach_inject((mach_inject_entry)bootstrapfn, lib, strlen(lib) + 1, pid, 0);
 }
 
 pid_t Injector::getProcessByName(const char *name)
@@ -52,38 +80,4 @@ pid_t Injector::getProcessByName(const char *name)
         }
     }
     return 0;
-}
-
-void *Injector::pthread_entry(void *patch_bundle)
-{
-    // printf("str = %s\n", (char*)patch_bundle);
-    // void *bundle = dlopen((char *)patch_bundle, RTLD_NOW);
-    // if (!bundle)
-    //     fprintf(stderr, "Could not load patch bundle: %s\n", dlerror());
-    return 0;
-}
-
-void Injector::inject_entry(ptrdiff_t offset, void *param, size_t psize, void *dummy)
-{
-    __pthread_set_self(dummy);
-
-    pthread_attr_t attr;
-    pthread_attr_init(&attr); 
-    
-    int policy;
-    pthread_attr_getschedpolicy(&attr, &policy);
-    pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
-    pthread_attr_setinheritsched(&attr, PTHREAD_EXPLICIT_SCHED);
-    
-    struct sched_param sched;
-    sched.sched_priority = sched_get_priority_max(policy);
-    pthread_attr_setschedparam(&attr, &sched);
-
-    pthread_t thread;
-    pthread_create(&thread, &attr,
-            (void * (*)(void *))((long)pthread_entry),
-            (void *)param);
-    pthread_attr_destroy(&attr);
-    
-    thread_suspend(mach_thread_self());
 }
