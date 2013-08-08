@@ -1,9 +1,9 @@
 #include <cstdio>
+#include <unistd.h>
 
 int main(int argc, char* argv[])
 {
     printf("testapp reporting in!\n");
-
-    for (;;) ;
+    sleep(100000000);
     return 0;
 }
