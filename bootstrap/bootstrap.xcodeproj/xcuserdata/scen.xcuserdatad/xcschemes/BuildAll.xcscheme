@@ -29,7 +29,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C46F6D9C17B41DE2000369C2"
-               BuildableName = "libbootstrap.dylib"
+               BuildableName = "bootstrap.dylib"
                BlueprintName = "bootstrap"
                ReferencedContainer = "container:bootstrap.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C46F6D8C17B41DD4000369C2"
-               BuildableName = "libtestdylib.dylib"
+               BuildableName = "testdylib.dylib"
                BlueprintName = "testdylib"
                ReferencedContainer = "container:../testdylib/testdylib.xcodeproj">
             </BuildableReference>

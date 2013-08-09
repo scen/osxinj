@@ -65,11 +65,6 @@ mach_inject(
 	unsigned int	jumpTableSize;
 	mach_error_t	err = machImageForPointer( threadEntry, &image, &imageSize, &jumpTableOffset, &jumpTableSize );
 	fprintf(stderr, "mach_inject: found threadEntry image at: %p with size: %lu\n", image, imageSize);
-	
-	for (int i = 0; i < 5; i++)
-	{
-		printf("i=%d code=0x%X\n", i, ((unsigned char*)threadEntry)[i]);
-	}
     
 	//	Initialize stackSize to default if requested.
 	if( stackSize == 0 )
@@ -113,7 +108,7 @@ mach_inject(
 		// on x86, jump table use relative jump instructions (jmp), which means
 		// the offset needs to be corrected. We thus copy the image and fix the offset by hand.
 		ptrdiff_t fixUpOffset = (ptrdiff_t) (image - remoteCode);
-		printf("image=0x%X remoteCode=0x%X delta=%d\n", image, remoteCode, fixUpOffset);
+		// printf("image=0x%X remoteCode=0x%X delta=%d\n", image, remoteCode, fixUpOffset);
 		void * fixedUpImage = fixedUpImageFromImage(image, imageSize, jumpTableOffset, jumpTableSize, fixUpOffset);
 		err = vm_write( remoteTask, remoteCode, (pointer_t) fixedUpImage, imageSize );
 		free(fixedUpImage);
@@ -151,7 +146,7 @@ mach_inject(
 	
 	//	Allocate the thread.
 	thread_act_t remoteThread;
-
+    
 #if defined (__i386__)
 	if( !err ) {
 		
@@ -280,7 +275,7 @@ machImageForPointer(
 		if (section == 0) continue;
 		long start = section->addr + _dyld_get_image_vmaddr_slide( imageIndex );
 		long stop = start + section->size;
-		printf("start %ld %p %s b\n", start, header, _dyld_get_image_name(imageIndex));
+        //		printf("start %ld %p %s b\n", start, header, _dyld_get_image_name(imageIndex));
 		if( p >= start && p <= stop ) {
 			//	It is truely insane we have to stat() the file system in order
 			//	to discover the size of an in-memory data structure.
@@ -337,11 +332,9 @@ machImageForPointer(
 #if defined(__i386__) // this segment is only available on IA-32
 			if (jumpTableOffset && jumpTableSize) {
                 const struct section * jumpTableSection = getsectbynamefromheader( header, SEG_IMPORT, "__jump_table" );
-                printf("jumpTableSection: 0x%X\n", jumpTableSection);
                 if (!jumpTableSection) {
                     unsigned char *start, *end;
                     jumpTableSection = getsectbynamefromheader( header, SEG_TEXT, "__symbol_stub" );
-                    printf("was null. 0x%X\n", jumpTableSection);
                     /*
                      start = end = (char *) header + jumpTableSection->offset;
                      end += jumpTableSection->size;
@@ -359,7 +352,6 @@ machImageForPointer(
                 if (jumpTableSection) {
                     *jumpTableOffset = jumpTableSection->offset;
                     *jumpTableSize = jumpTableSection->size;
-                    printf("jumptableOffset: 0x%X jumpTableSize: 0x%X\n", *jumpTableOffset, *jumpTableSize);
                 }
 			}
 #endif
@@ -400,10 +392,10 @@ void* fixedUpImageFromImage (
         	jumpTable += 2;
             unsigned char *jmpValue = *((unsigned char **)jumpTable);
             
-             fprintf(stderr, "at %p correcting %p to %p\n",
-             (char *)jumpTable -2,
-             jmpValue, jmpValue - fixUpOffset);
-             
+            fprintf(stderr, "at %p correcting %p to %p\n",
+                    (char *)jumpTable -2,
+                    jmpValue, jmpValue - fixUpOffset);
+            
             jmpValue -= fixUpOffset;
             *((unsigned char **)jumpTable) = jmpValue;
             jumpTable+=4; //skip address
