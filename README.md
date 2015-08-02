@@ -1,7 +1,7 @@
 osxinj
 ======
 
-Another dylib injector.
+Another dylib injector. Uses a bootstrapping module since `mach_inject` doesn't fully emulate library loading and crashes when loading complex modules.
 
 - `mach_inject` was taken from `rentzsch/mach_inject`. Thanks!
 - `testapp` is a sample app to inject into
