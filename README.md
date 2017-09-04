@@ -1,5 +1,6 @@
 osxinj
 ======
+Fixed version of osxinj!
 
 Another dylib injector. Uses a bootstrapping module since `mach_inject` doesn't fully emulate library loading and crashes when loading complex modules.
 
