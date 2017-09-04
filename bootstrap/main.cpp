@@ -16,13 +16,7 @@
 
 #define DLLEXPORT __attribute__((visibility("default")))
 
-#if __MAC_OS_X_VERSION_MIN_REQUIRED >= __MAC_10_12
-#define PTHREAD_SET_SELF _pthread_set_self
-#else
-#define PTHREAD_SET_SELF __pthread_set_self
-#endif
-
-extern "C" void PTHREAD_SET_SELF(void*);
+extern "C" void _pthread_set_self(void*);
 
 extern "C" void bootstrap(ptrdiff_t offset, void *param, size_t psize, void *dummy) DLLEXPORT;
 
@@ -36,10 +30,10 @@ void *loaderThread(void *patch_bundle)
 
 void bootstrap(ptrdiff_t offset, void *param, size_t psize, void *dummy)
 {
-    PTHREAD_SET_SELF(dummy);
-
+    _pthread_set_self(dummy);
+    
     pthread_attr_t attr;
-    pthread_attr_init(&attr); 
+    pthread_attr_init(&attr);
     
     int policy;
     pthread_attr_getschedpolicy(&attr, &policy);
@@ -49,11 +43,11 @@ void bootstrap(ptrdiff_t offset, void *param, size_t psize, void *dummy)
     struct sched_param sched;
     sched.sched_priority = sched_get_priority_max(policy);
     pthread_attr_setschedparam(&attr, &sched);
-
+    
     pthread_t thread;
     pthread_create(&thread, &attr,
-            (void * (*)(void *))((long)loaderThread),
-            (void *)param);
+                   (void * (*)(void *))((long)loaderThread),
+                   (void *)param);
     pthread_attr_destroy(&attr);
     
     thread_suspend(mach_thread_self());

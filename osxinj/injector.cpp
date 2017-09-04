@@ -17,7 +17,7 @@ Injector::Injector() : module(0), bootstrapfn(0)
     module = dlopen("bootstrap.dylib",
         RTLD_NOW | RTLD_LOCAL);
 
-    printf("module: 0x%X\n", module);
+    printf("module: 0x%llx\n", (uint64_t)module);
     if (!module)
     {
         fprintf(stderr, "dlopen error: %s\n", dlerror());
@@ -25,7 +25,7 @@ Injector::Injector() : module(0), bootstrapfn(0)
     }
 
     bootstrapfn = dlsym(module, "bootstrap");
-    printf("bootstrapfn: 0x%X\n", bootstrapfn);
+    printf("bootstrapfn: 0x%llx\n", (uint64_t)bootstrapfn);
 
     if (!bootstrapfn)
     {
@@ -47,10 +47,11 @@ void Injector::inject(pid_t pid, const char* lib)
 {
     if (!module || !bootstrapfn)
     {
-        fprintf(stderr, "failed to inject: module:0x%X bootstrapfn:0x%X\n", module, bootstrapfn);
+        fprintf(stderr, "failed to inject: module:0x%llx bootstrapfn:0x%llx\n", (uint64_t)module, (uint64_t)bootstrapfn);
         return;
     }
     mach_error_t err = mach_inject((mach_inject_entry)bootstrapfn, lib, strlen(lib) + 1, pid, 0);
+    fprintf(stderr, "Err:%i\n",err);
 }
 
 pid_t Injector::getProcessByName(const char *name)
@@ -67,7 +68,7 @@ pid_t Injector::getProcessByName(const char *name)
         char curName[PROC_PIDPATHINFO_MAXSIZE];
         memset(curPath, 0, sizeof curPath);
         proc_pidpath(pids[i], curPath, sizeof curPath);
-        int len = strlen(curPath);
+        int len = (int)strlen(curPath);
         if (len)
         {
             int pos = len;
