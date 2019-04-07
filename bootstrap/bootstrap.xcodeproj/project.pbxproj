@@ -94,6 +94,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = C46F6D9417B41DE2000369C2;
@@ -178,7 +179,7 @@
 		C46F6DA217B41DE2000369C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				EXECUTABLE_PREFIX = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -187,7 +188,7 @@
 		C46F6DA317B41DE2000369C2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				EXECUTABLE_PREFIX = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
