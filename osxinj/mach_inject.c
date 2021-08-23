@@ -11,6 +11,7 @@
 #include <sys/stat.h>
 #include <sys/errno.h>
 #include <assert.h>
+#include <unistd.h>
 #include <stdlib.h> // for malloc()
 #include <stdio.h>  // for printf()
 #include <mach-o/fat.h> // for fat structure decoding
